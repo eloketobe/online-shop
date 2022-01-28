@@ -11,12 +11,14 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: product.color,
-      appBar: buildAppBar(),
-      body: Body(product: product,),
+      appBar: buildAppBar(context),
+      body: Body(
+        product: product,
+      ),
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
       elevation: 0,
       backgroundColor: product.color,
@@ -25,7 +27,9 @@ class DetailsScreen extends StatelessWidget {
           'assets/icons/back.svg',
           color: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
       actions: [
         IconButton(
