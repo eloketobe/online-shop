@@ -7,6 +7,8 @@ import 'package:online_shop/screens/details/components/color_and_size.dart';
 import 'package:online_shop/screens/details/components/description.dart';
 import 'package:online_shop/screens/details/components/product_title_with_image.dart';
 
+import 'cart_counter_with_fav_button.dart';
+
 class Body extends StatelessWidget {
   final Product product;
   const Body({required this.product, Key? key}) : super(key: key);
@@ -37,7 +39,7 @@ class Body extends StatelessWidget {
                     children: [
                       ColorAndSize(product: product),
                       Description(product: product),
-                      CounterWithFavButton()
+                      CartCounterWithFavButton()
                     ],
                   ),
                 ),
