@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/constants.dart';
 import 'package:online_shop/models/product.dart';
-import 'package:online_shop/screens/details/components/body.dart';
 
 class ColorAndSize extends StatelessWidget {
   const ColorAndSize({
@@ -24,15 +23,15 @@ class ColorAndSize extends StatelessWidget {
                 style: TextStyle(color: kTextColor),
               ),
               Row(
-                children: const [
-                  ColorDot(
+                children: [
+                  colorDot(
                     color: Color(0xff356c95),
                     isSelected: true,
                   ),
-                  ColorDot(
+                  colorDot(
                     color: Color(0xfff8c078),
                   ),
-                  ColorDot(
+                  colorDot(
                     color: Color(0xffa29898),
                   )
                 ],
@@ -42,22 +41,37 @@ class ColorAndSize extends StatelessWidget {
         ),
         Expanded(
           child: RichText(
-              text: TextSpan(
-                  style: TextStyle(color: kTextColor),
-                  children: [
-                TextSpan(text: 'Size\n'),
-                TextSpan(
-                    text: '${product.size} cm',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5
-                        ?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: kTextColor))
-              ])),
+              text: TextSpan(style: TextStyle(color: kTextColor), children: [
+            TextSpan(text: 'Size\n'),
+            TextSpan(
+                text: '${product.size} cm',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5
+                    ?.copyWith(fontWeight: FontWeight.bold, color: kTextColor))
+          ])),
         )
       ],
     );
   }
 }
 
+Widget colorDot({
+  required Color color,
+  bool isSelected = false,
+}) =>
+    Container(
+        padding: const EdgeInsets.all(2.5),
+        margin: const EdgeInsets.only(
+            top: kDefaultPadding * 0.4, right: kDefaultPadding * 0.2),
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: isSelected ? color : Colors.transparent)),
+        height: 24,
+        width: 24,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+          ),
+        ));
