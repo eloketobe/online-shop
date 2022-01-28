@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/constants.dart';
 import 'package:online_shop/models/product.dart';
+import 'package:online_shop/screens/details/components/cart_counter.dart';
 import 'package:online_shop/screens/details/components/color_and_size.dart';
+import 'package:online_shop/screens/details/components/description.dart';
 import 'package:online_shop/screens/details/components/product_title_with_image.dart';
 
 class Body extends StatelessWidget {
@@ -32,7 +34,9 @@ class Body extends StatelessWidget {
                           topRight: Radius.circular(24))),
                   child: Column(
                     children: [
-                      ColorAndSize(product: product)
+                      ColorAndSize(product: product),
+                      Description(product: product),
+                      CartCounter()
                     ],
                   ),
                 ),
@@ -45,6 +49,7 @@ class Body extends StatelessWidget {
     );
   }
 }
+
 class ColorDot extends StatelessWidget {
   final Color color;
   final bool isSelected;
